@@ -28,13 +28,13 @@ This project is a community driven build of W3 Total Cache (W3TC) originally dev
  
  ~~Malformed HTML in Generated Item UIs (Admin Pages)~~
  
- "Security Headers" Section Added to Browser Cache
+ ~~"Security Headers" Section Added to Browser Cache~~
  
- + Extra: #PR363 – Adds Default Values to CSP (Security Headers)
+ ~~+ Extra: #PR363 – Adds Default Values to CSP (Security Headers)~~
  
- + Extra: #PR377 – Important Change – Session Cookies
+ ~~+ Extra: #PR377 – Important Change – Session Cookies~~
  
- + Extra: #PR436 – Add referrer policy security header
+ ~~+ Extra: #PR436 – Add referrer policy security header~~
  
  ~~W3TC is Collecting Tracking Usage At All Times~~
  
