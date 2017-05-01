@@ -2,13 +2,13 @@
 
 This project is a community driven build of W3 Total Cache (W3TC) originally developed by [@ftownes](https://github.com/ftownes).  The aim is to continuously incorporate fixes, improvements, and enhancements over the official Wordpress release of [W3 Total Cache](https://wordpress.org/plugins/w3-total-cache/).
 
- Dashboard Widget For Flushing Individual User-Inputted URLs
+ ~~Dashboard Widget For Flushing Individual User-Inputted URLs~~
  
- + Extra: #PR335 – Adds Missing Nonce check
+ ~~+ Extra: #PR335 – Adds Missing Nonce check~~
  
  {uploads_dir} Placeholder & Full URLS Issue In CDN Custom Files Field
  
- Google PageSpeed Widget – Key Restriction Field Added
+ ~~Google PageSpeed Widget – Key Restriction Field Added~~
  
  ~~Page Cache – Added 4 New "Never Cache ..." Fields~~
  
