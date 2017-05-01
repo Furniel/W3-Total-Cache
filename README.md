@@ -14,7 +14,7 @@ This project is a community driven build of W3 Total Cache (W3TC) originally dev
  
  ~~+ Extra: #PR320 – Adds Missing Check for Page & Post Type~~
  
- WP-CLI – Prime the Page Cache (Cache Preload)
+ ~~WP-CLI – Prime the Page Cache (Cache Preload)~~
  
  ~~Flushing Not Working Consistently For Post Changes~~
  
