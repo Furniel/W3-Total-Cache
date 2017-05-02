@@ -18,7 +18,7 @@ This project is a community driven build of W3 Total Cache (W3TC) originally dev
  
  - ~~Flushing Not Working Consistently For Post Changes~~
  
- - **Amazon Web Services (AWS) Signature v4 Support & New Locations(not merged at this moment)**
+ - ~~Amazon Web Services (AWS) Signature v4 Support & New Locations~~
  
  - ~~Save Cloudflare Settings – SSL Update Failure~~
  
