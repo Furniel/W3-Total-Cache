@@ -2,102 +2,102 @@
 
 This project is a community driven build of W3 Total Cache (W3TC) originally developed by [@ftownes](https://github.com/ftownes).  The aim is to continuously incorporate fixes, improvements, and enhancements over the official Wordpress release of [W3 Total Cache](https://wordpress.org/plugins/w3-total-cache/).
 
- ~~Dashboard Widget For Flushing Individual User-Inputted URLs~~
+ - ~~Dashboard Widget For Flushing Individual User-Inputted URLs~~
  
- ~~+ Extra: #PR335 – Adds Missing Nonce check~~
+ - ~~+ Extra: #PR335 – Adds Missing Nonce check~~
  
- {uploads_dir} Placeholder & Full URLS Issue In CDN Custom Files Field
+ - **{uploads_dir} Placeholder & Full URLS Issue In CDN Custom Files Field(not merged at this moment)**
  
- ~~Google PageSpeed Widget – Key Restriction Field Added~~
+ - ~~Google PageSpeed Widget – Key Restriction Field Added~~
  
- ~~Page Cache – Added 4 New "Never Cache ..." Fields~~
+ - ~~Page Cache – Added 4 New "Never Cache ..." Fields~~
  
- ~~+ Extra: #PR320 – Adds Missing Check for Page & Post Type~~
+ - ~~+ Extra: #PR320 – Adds Missing Check for Page & Post Type~~
  
- ~~WP-CLI – Prime the Page Cache (Cache Preload)~~
+ - ~~WP-CLI – Prime the Page Cache (Cache Preload)~~
  
- ~~Flushing Not Working Consistently For Post Changes~~
+ - ~~Flushing Not Working Consistently For Post Changes~~
  
- Amazon Web Services (AWS) Signature v4 Support & New Locations
+ - **Amazon Web Services (AWS) Signature v4 Support & New Locations(not merged at this moment)**
  
- ~~Save Cloudflare Settings – SSL Update Failure~~
+ - ~~Save Cloudflare Settings – SSL Update Failure~~
  
- ~~Rewrite URLs via wp...attachment_for_js() filter when CDN is Enabled~~
+ - ~~Rewrite URLs via wp...attachment_for_js() filter when CDN is Enabled~~
  
- ~~+ Extra: #PR350 – Checkbox to Use CDN URLs for Media Library~~
+ - ~~+ Extra: #PR350 – Checkbox to Use CDN URLs for Media Library~~
  
- ~~Malformed HTML in Generated Item UIs (Admin Pages)~~
+ - ~~Malformed HTML in Generated Item UIs (Admin Pages)~~
  
- ~~"Security Headers" Section Added to Browser Cache~~
+ - ~~"Security Headers" Section Added to Browser Cache~~
  
- ~~+ Extra: #PR363 – Adds Default Values to CSP (Security Headers)~~
+ - ~~+ Extra: #PR363 – Adds Default Values to CSP (Security Headers)~~
  
- ~~+ Extra: #PR377 – Important Change – Session Cookies~~
+ - ~~+ Extra: #PR377 – Important Change – Session Cookies~~
  
- ~~+ Extra: #PR436 – Add referrer policy security header~~
+ - ~~+ Extra: #PR436 – Add referrer policy security header~~
  
- ~~W3TC is Collecting Tracking Usage At All Times~~
+ - ~~W3TC is Collecting Tracking Usage At All Times~~
  
- ~~Configuration Bug – Redis/Memcached Server Entries~~
+ - ~~Configuration Bug – Redis/Memcached Server Entries~~
  
- ~~Error Message: Trying to Get Property of Non-Object~~
+ - ~~Error Message: Trying to Get Property of Non-Object~~
  
- ~~Page Cache – Accepted Query Strings Enhancement~~
+ - ~~Page Cache – Accepted Query Strings Enhancement~~
  
- ~~Incorrect Use of Removing Query String From URLs~~
+ - ~~Incorrect Use of Removing Query String From URLs~~
  
- ~~Enhance remove_query() to Recognize Other Ampersand Forms~~
+ - ~~Enhance remove_query() to Recognize Other Ampersand Forms~~
  
- ~~Filter to Set Cache Lifetime Period On A Per-Page Basis~~
+ - ~~Filter to Set Cache Lifetime Period On A Per-Page Basis~~
  
- ~~Warning: Invalid Arguments in Minify_Environment.php~~
+ - ~~Warning: Invalid Arguments in Minify_Environment.php~~
  
- ~~Feeds Not Caching Nor Serving Back as XML~~
+ - ~~Feeds Not Caching Nor Serving Back as XML~~
  
- ~~+ **Extra: – Fix admin setting always disabled on nginx~~
+ - ~~+ **Extra: – Fix admin setting always disabled on nginx~~
  
- ~~Smart Browser Cache Default Settings~~
+ - ~~Smart Browser Cache Default Settings~~
  
- ~~+ Extra: #PR395 – A Few More Useful Smart Default Settings~~
+ - ~~+ Extra: #PR395 – A Few More Useful Smart Default Settings~~
  
- ~~Expanded Regex Support & Improved Page Cache Cookies~~
+ - ~~Expanded Regex Support & Improved Page Cache Cookies~~
  
- ~~Debug Mode Not Working~~
+ - ~~Debug Mode Not Working~~
  
- ~~+ Extra: #PR406 – Missed File - Debug Mode Not Working~~
+ - ~~+ Extra: #PR406 – Missed File - Debug Mode Not Working~~
  
- ~~PHP Deprecation Notice – is_comments_popup()~~
+ - ~~PHP Deprecation Notice – is_comments_popup()~~
  
- ~~W3TC-Include-JS-Head Tag Implementation Missing For Auto Mode~~
+ - ~~W3TC-Include-JS-Head Tag Implementation Missing For Auto Mode~~
  
- ~~Catch Exceptions Thrown When Saving Config~~
+ - ~~Catch Exceptions Thrown When Saving Config~~
  
- ~~Fix feeds on the dashboard~~
+ - ~~Fix feeds on the dashboard~~
  
- ~~Make the dashboard responsive~~
+ - ~~Make the dashboard responsive~~
  
- ~~Deprecated the "Allow, Deny, and Order" directives~~
+ - ~~Deprecated the "Allow, Deny, and Order" directives~~
  
- ~~Util_Environment::document_root() On Windows return "/" instead of "\"~~
+ - **Util_Environment::document_root() On Windows return "/" instead of "\"(Buggy, reverted)**
  
- ~~Customize Cache Directory~~
+ - **Customize Cache Directory(Buggy, reverted)**
  
- ~~YUI Compressor fix for JAVA path~~
+ - ~~YUI Compressor fix for JAVA path~~
  
- ~~Closure Compiler fix for JAVA path~~
+ - ~~Closure Compiler fix for JAVA path~~
  
- ~~Fixed Redis Test on Admin Dashboard~~
+ - ~~Fixed Redis Test on Admin Dashboard~~
  
- ~~Extends "http 2 push" to page cache enhanced~~
+ - ~~Extends "http 2 push" to page cache enhanced~~
  
- ~~+ Extra: #PR320 – Support for more than 50 assets~~
+ - ~~+ Extra: #PR320 – Support for more than 50 assets~~
  
- ~~Fixed Object Cache setting cache value on missed gets~~
+ - ~~Fixed Object Cache setting cache value on missed gets~~
  
- ~~Call to a member function using_index_permalinks() on null~~
+ - ~~Call to a member function using_index_permalinks() on null~~
  
- ~~stristr(): Empty needle~~
+ - ~~stristr(): Empty needle~~
  
- ~~Media Library Export skips files~~
+ - ~~Media Library Export skips files~~
  
- ~~Fixed semicolon bug & added woff2~~
+ - ~~Fixed semicolon bug & added woff2~~
