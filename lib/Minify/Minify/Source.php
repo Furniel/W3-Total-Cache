@@ -107,12 +107,12 @@ class Minify_Source {
         if (isset($this->minifyOptions['processCssImports']) && $this->minifyOptions['processCssImports']) {
             $content = Minify_ImportProcessor::process($this->filepath);
         } else {
-            $content = (null !== $this->filepath)
-                ? file_get_contents($this->filepath)
-                : ((null !== $this->_content)
-                    ? $this->_content
-                    : call_user_func($this->_getContentFunc, $this->_id)
-                );
+        $content = (null !== $this->filepath)
+            ? file_get_contents($this->filepath)
+            : ((null !== $this->_content)
+                ? $this->_content
+                : call_user_func($this->_getContentFunc, $this->_id)
+            );
         }
         
         // remove UTF-8 BOM if present

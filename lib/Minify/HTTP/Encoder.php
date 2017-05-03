@@ -206,7 +206,7 @@ class HTTP_Encoder {
             || 0 === strpos($ae, 'deflate, gzip,') // opera
         ) {
         	if (function_exists('gzencode'))
-            	return array('gzip', 'gzip');
+            return array('gzip', 'gzip');
         }
         // gzip checks (slow)
         if (preg_match(

@@ -52,6 +52,7 @@ abstract class Minify_Controller_Base {
             ,'processCssImports' => false
             ,'quiet' => false // serve() will send headers and output
             ,'debug' => false
+            ,'concatOnly' => false
             
             // if you override these, the response codes MUST be directly after
             // the first space.
@@ -126,7 +127,9 @@ abstract class Minify_Controller_Base {
                 return true;
             }
         }
-        throw new Exception("File '$file' is outside \$allowDirs. If the path is"
+        
+        $allowDirs = implode(';', array_values($allowDirs));
+        throw new Exception("File '$file' is outside \$allowDirs ($allowDirs). If the path is"
             . " resolved via an alias/symlink, look into the \$min_symlinks option."
             . " E.g. \$min_symlinks['/" . dirname($uri) . "'] = '" . dirname($file) . "';");
     }
@@ -146,9 +149,7 @@ abstract class Minify_Controller_Base {
     /**
      * instances of Minify_Source, which provide content and any individual minification needs.
      *
-     * @var array
-     * 
-     * @see Minify_Source
+     * @var Minify_Source[]
      */
     public $sources = array();
     

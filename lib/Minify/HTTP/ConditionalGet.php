@@ -313,7 +313,7 @@ class HTTP_ConditionalGet {
         'cacheheaders_enabled' => true, 
         'cacheheaders' => 'cache_validation'
     );
-    
+
     /**
      * @param string $hash
      *
@@ -324,7 +324,7 @@ class HTTP_ConditionalGet {
         $this->_etag = '"' . substr($scope, 0, 3) . $hash . '"';
         
         if ($this->_cacheHeaders['use_etag'])
-            $this->_headers['ETag'] = $this->_etag;
+        $this->_headers['ETag'] = $this->_etag;
     }
 
     /**
@@ -375,7 +375,7 @@ class HTTP_ConditionalGet {
                 // respond with the client's matched ETag, even if it's not what
                 // we would've sent by default
                 if ($this->_cacheHeaders['use_etag'])
-                    $this->_headers['ETag'] = trim($clientEtag);
+                $this->_headers['ETag'] = trim($clientEtag);
                 return true;
             }
         }
@@ -408,7 +408,7 @@ class HTTP_ConditionalGet {
             // Apache 2.2's behavior. If there was no ETag match, send the 
             // non-encoded version of the ETag value.
             if ($this->_cacheHeaders['use_etag'])
-                $this->_headers['ETag'] = $this->normalizeEtag($this->_etag);
+            $this->_headers['ETag'] = $this->normalizeEtag($this->_etag);
             return true;
         }
         return false;

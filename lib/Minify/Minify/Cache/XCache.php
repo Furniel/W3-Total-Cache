@@ -100,8 +100,8 @@ class Minify_Cache_XCache {
      */
     public function display($id) {
         echo $this->_fetch($id)
-                ? $this->_data
-                : '';
+            ? $this->_data
+            : '';
     }
 
     /**
@@ -113,8 +113,8 @@ class Minify_Cache_XCache {
      */
     public function fetch($id) {
         return $this->_fetch($id)
-                ? $this->_data
-                : '';
+            ? $this->_data
+            : '';
     }
 
     private $_exp = null;

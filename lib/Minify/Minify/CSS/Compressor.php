@@ -153,7 +153,7 @@ class Minify_CSS_Compressor {
         
         // prevent triggering IE6 bug: http://www.crankygeek.com/ie6pebug/
         $css = preg_replace('/:first-l(etter|ine)\\{/', ':first-l$1 {', $css);
-
+            
         // fill placeholders
         $css = str_replace(
             array_keys($this->_placeholders)
