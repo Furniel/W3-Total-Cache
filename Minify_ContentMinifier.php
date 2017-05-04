@@ -31,7 +31,7 @@ class Minify_ContentMinifier {
 
 		'css' => array( 'Minify_CSS', 'minify' ),
 		'yuicss' => array( 'Minify_YUICompressor', 'minifyCss' ),
-		'cssmin' => array( 'Minify0_CSSmin', 'minify' ),
+		'cssmin' => array( 'Minify0_Minifier', 'minify' ),
 		'csstidy' => array( 'Minify_CSSTidy', 'minify' ),
 
 		'html' => array( 'Minify_HTML', 'minify' ),
