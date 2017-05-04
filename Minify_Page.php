@@ -640,7 +640,7 @@ class Minify_Page extends Base_Page_Settings {
         if ( !empty( $ignore_files ) ) {
             $diff = array();
             foreach( $files as $file ) {
-                if ( !@preg_match( '~' . implode( "|", $ignore_files ) . '~i', $file ) ) {
+                if ( !Util_Environment::is_in_array($ignore_files, $file) ) {
                     $diff[] = $file;
                 }
             }
@@ -670,7 +670,7 @@ class Minify_Page extends Base_Page_Settings {
         if ( !empty( $ignore_files ) ) {
             $diff = array();
             foreach( $files as $file ) {
-                if ( !@preg_match( '~' . implode( "|", $ignore_files ) . '~i', $file ) ) {
+                if ( !Util_Environment::is_in_array($ignore_files, $file) ) {
                     $diff[] = $file;
                 }
             }

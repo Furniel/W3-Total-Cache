@@ -230,7 +230,7 @@ class Minify_Plugin {
                     $ignore_css_files = str_replace( "~", "\~", $ignore_css_files );
                     Util_Rule::array_trim( $ignore_css_files );
 
-					if ( !empty( $ignore_css_files ) && @preg_match( '~' . implode("|", $ignore_css_files ) . '~i', $file ) ) {
+                    if ( !empty( $ignore_css_files ) && Util_Environment::is_in_array($ignore_css_files, $file)) {
 						if ( $tag_pos > $embed_pos ) {
 							if ( $files_to_minify ) {
 								$data = array(
@@ -1065,7 +1065,7 @@ class Minify_Plugin {
             $uas = str_replace( "~", "\~", $uas );
             Util_Rule::array_trim( $uas );
 
-            if ( !empty( $uas ) && @preg_match( '~' . implode( "|", $uas ) . '~i', $_SERVER['HTTP_USER_AGENT'] ) ) {
+            if ( !empty( $uas ) && Util_Environment::is_in_array($uas, $_SERVER['HTTP_USER_AGENT'])) {
                 return false;
             }
         }
@@ -1542,7 +1542,7 @@ class _W3_MinifyJsAuto {
 
 		$step1_result = $this->minify_helpers->is_file_for_minification( $script_src, $file );
 		$step1 = !empty( $step1_result );
-		$step2 = empty( $this->ignore_js_files ) || !@preg_match( '~' . implode( "|", $this->ignore_js_files ) . '~i', $file );
+		$step2 = empty( $this->ignore_js_files ) || !Util_Environment::is_in_array($this->ignore_js_files, $file);
 
 		$do_tag_minification = $step1 && $step2;
 		$do_tag_minification = apply_filters( 'w3tc_minify_js_do_tag_minification',

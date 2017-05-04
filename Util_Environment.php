@@ -128,6 +128,26 @@ class Util_Environment {
 
 		return $url;
 	}
+	
+	/*
+     * Checks if array contains entry, regexp supported
+     *
+     * @return boolean
+     */
+	static public function is_in_array( $array, $entry ) {
+		if (empty( $array || $entry))
+		{
+			return false;
+		}
+
+		foreach ($array as $value) {
+			if (preg_match( '~' . $value . '~i', $entry))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * Returns true if database cluster is used
