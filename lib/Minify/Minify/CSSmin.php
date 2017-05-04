@@ -62,7 +62,7 @@ class Minify_CSSmin {
             $css = preg_replace('/@charset[^;]+;\\s*/', '', $css);
         }
         if ($options['compress']) {
-            $obj = new CSSmin();
+            $obj = new Minify0_CSSmin();
             $css = $obj->run($css);
         }
         if (! $options['currentDir'] && ! $options['prependRelativePath']) {
