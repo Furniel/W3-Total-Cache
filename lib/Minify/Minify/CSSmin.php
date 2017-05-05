@@ -71,9 +71,7 @@ class Minify_CSSmin {
         if ($options['currentDir']) {
             return Minify_CSS_UriRewriter::rewrite(
                 $css
-                ,$options['currentDir']
-                ,$options['docRoot']
-                ,$options['symlinks']
+                ,$options
             );  
         } else {
             return Minify_CSS_UriRewriter::prepend(
