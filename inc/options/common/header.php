@@ -5,7 +5,7 @@ if ( !defined( 'W3TC' ) )
 	die();
 
 $config = Dispatcher::config();
-$page = Util_Admin::get_current_page();
+$page = '';//Util_Admin::get_current_page();
 $licensing_visible = ( ( !Util_Environment::is_wpmu() || is_network_admin() ) &&
 	!ini_get( 'w3tc.license_key' ) &&
 	get_transient( 'w3tc_license_status' ) != 'host_valid' );

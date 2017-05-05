@@ -474,6 +474,21 @@ function w3tc_csp_reference() {
     });
 }
 
+
+function w3tc_openTab(evt, tabName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("tab");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3tc-blue", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " w3tc-blue";
+}
+
 jQuery(function() {
     // general page
     w3tc_toggle('enabled');
