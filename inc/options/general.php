@@ -12,32 +12,32 @@ include W3TC_INC_DIR . '/options/common/header.php';
 echo sprintf( 'The plugin is currently %1$s If an option is disabled it means that either your current installation is not compatible or software installation is required.', '<span class="w3tc-'.( $enabled ? 'enabled">' . __( 'enabled', 'w3-total-cache' ) : 'disabled">' . __( 'disabled', 'w3-total-cache' ) ) . '</span>.' )
 ?>
 </p>
-<div class="w3tc-bar w3tc-grey">
-    <button class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general')">General</button>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'page_cache')">Page Cache</button>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'minify')">Minify</button>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'opcache')">Opcache</button>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'database_cache')">Database Cache</button>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'browser_cache')">Browser Cache</button>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'cdn')">CDN</button>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'reverse_proxy')">Reverse Proxy</button>
+<div id="tabs" class="w3tc-bar w3tc-grey">
+    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'general')">General</button>
+    <button id="tablink_page_cache" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'page_cache', 'general')">Page Cache</button>
+    <button id="tablink_minify" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'minify', 'general')">Minify</button>
+    <button id="tablink_opcache" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'opcache', 'general')">Opcache</button>
+    <button id="tablink_database_cache" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'database_cache', 'general')">Database Cache</button>
+    <button id="tablink_browser_cache" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'browser_cache', 'general')">Browser Cache</button>
+    <button id="tablink_cdn" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'cdn', 'general')">CDN</button>
+    <button id="tablink_reverse_proxy" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'reverse_proxy', 'general')">Reverse Proxy</button>
     <?php if ( Util_Environment::is_w3tc_enterprise() ) { ?>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'message_bus')">Message Bus</button>
+    <button id="tablink_message_bus" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'message_bus', 'general')">Message Bus</button>
     <?php } ?>
     <?php
     foreach ( $custom_areas as $area ) { ?>
-        <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event, '<?php echo $area['id']?>_main')"><?php echo $area['text']?></button>
+        <button id="tablink_<?php echo $area['id']?>" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event, '<?php echo $area['id']?>', 'general')"><?php echo $area['text']?></button>
     <?php } ?>
     <?php if ( $licensing_visible ) { ?>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'licensing')">Licensing</button>
+    <button id="tablink_licensing" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'licensing', 'general')">Licensing</button>
     <?php } ?>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'miscellaneous')">Miscellaneous</button>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'debug')">Debug</button>
-    <button class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'import_export')">Import/Export</button>
+    <button id="tablink_miscellaneous" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'miscellaneous', 'general')">Miscellaneous</button>
+    <button id="tablink_debug" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'debug', 'general')">Debug</button>
+    <button id="tablink_import_export" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'import_export', 'general')">Import/Export</button>
 </div>
 <form id="w3tc_form" action="admin.php?page=<?php echo $this->_page; ?>" method="post">
     <div class="metabox-holder">
-        <div id="general" class="tab">
+        <div id="tab_general" class="tab">
         <?php Util_Ui::postbox_header( __( 'General', 'w3-total-cache' ), '' ); ?>
         <table class="form-table">
             <tr>
@@ -67,7 +67,7 @@ echo sprintf( 'The plugin is currently %1$s If an option is disabled it means th
         <?php Util_Ui::button_config_save( 'general_general' ); ?>
         <?php Util_Ui::postbox_footer(); ?>
         </div>
-        <div id="page_cache" class="tab" style="display:none">
+        <div id="tab_page_cache" class="tab" style="display:none">
         <?php
 Util_Ui::postbox_header( __( 'Page Cache', 'w3-total-cache' ), '', 'page_cache' );
 Util_Ui::config_overloading_button( array(
@@ -147,7 +147,7 @@ Util_Ui::button_config_save( 'general_pagecache',
 ?>
         <?php Util_Ui::postbox_footer(); ?>
         </div>
-        <div id="minify" class="tab" style="display:none">
+        <div id="tab_minify" class="tab" style="display:none">
         <?php
 Util_Ui::postbox_header( __( 'Minify', 'w3-total-cache' ), '', 'minify' );
 Util_Ui::config_overloading_button( array(
@@ -221,12 +221,12 @@ Util_Ui::button_config_save( 'general_minify',
 ?>
         <?php Util_Ui::postbox_footer(); ?>
         </div>
-        <div id="opcache" class="tab" style="display:none">
+        <div id="tab_opcache" class="tab" style="display:none">
         <?php
 
 do_action( 'w3tc_settings_general_boxarea_system_opcache' ) ?>
         </div>
-        <div id="database_cache" class="tab" style="display:none">
+        <div id="tab_database_cache" class="tab" style="display:none">
         <?php
 Util_Ui::postbox_header( __( 'Database Cache', 'w3-total-cache' ), '', 'database_cache' );
 Util_Ui::config_overloading_button( array(
@@ -262,7 +262,7 @@ Util_Ui::button_config_save( 'general_dbcache',
 ?>
         <?php Util_Ui::postbox_footer(); ?>
         </div>
-        <div id="object_cache" class="tab" style="display:none">
+        <div id="tab_object_cache" class="tab" style="display:none">
         <?php
 Util_Ui::postbox_header( 'Object Cache', '', 'object_cache' );
 Util_Ui::config_overloading_button( array(
@@ -294,7 +294,7 @@ Util_Ui::button_config_save( 'general_objectcache',
 ?>
         <?php Util_Ui::postbox_footer(); ?>
         </div>
-        <div id="browser_cache" class="tab" style="display:none">
+        <div id="tab_browser_cache" class="tab" style="display:none">
         <?php
 Util_Ui::postbox_header( __( 'Browser Cache', 'w3-total-cache' ), '', 'browser_cache' );
 Util_Ui::config_overloading_button( array(
@@ -317,10 +317,10 @@ Util_Ui::config_item( array(
         <?php Util_Ui::button_config_save( 'general_browsercache' ); ?>
         <?php Util_Ui::postbox_footer(); ?>
         </div>
-        <div id="cdn" class="tab" style="display:none">
+        <div id="tab_cdn" class="tab" style="display:none">
         <?php do_action( 'w3tc_settings_general_boxarea_cdn' ); ?>
         </div>
-        <div id="reverse_proxy" class="tab" style="display:none">
+        <div id="tab_reverse_proxy" class="tab" style="display:none">
         <?php
 Util_Ui::postbox_header( __( 'Reverse Proxy', 'w3-total-cache' ), '', 'reverse_proxy' );
 Util_Ui::config_overloading_button( array(
@@ -361,7 +361,7 @@ Util_Ui::button_config_save( 'general_varnish',
 ?>
         <?php Util_Ui::postbox_footer(); ?>
         </div>
-        <div id="message_bus" class="tab" style="display:none">
+        <div id="tab_message_bus" class="tab" style="display:none">
         <?php if ( Util_Environment::is_w3tc_enterprise() ): ?>
         <?php Util_Ui::postbox_header( 'Message Bus', '', 'amazon_sns' ); ?>
         <p>
@@ -422,11 +422,11 @@ Util_Ui::button_config_save( 'general_varnish',
         </div>
         <?php
         foreach ( $custom_areas as $area ) {
-            echo '<div id="'.$area['id'].'_main" class="tab" style="display:none">';
+            echo '<div id="tab_'.$area['id'].'" class="tab" style="display:none">';
             do_action( "w3tc_settings_general_boxarea_{$area['id']}" );
             echo '</div>';
         } ?>
-        <div id="licensing" class="tab" style="display:none">
+        <div id="tab_licensing" class="tab" style="display:none">
         <?php if ( $licensing_visible ): ?>
             <?php Util_Ui::postbox_header( __( 'Licensing', 'w3-total-cache' ), '', 'licensing' ); ?>
             <table class="form-table">
@@ -448,7 +448,7 @@ Util_Ui::button_config_save( 'general_varnish',
             <?php Util_Ui::postbox_footer(); ?>
         <?php endif ?>
         </div>
-        <div id="miscellaneous" class="tab" style="display:none">
+        <div id="tab_miscellaneous" class="tab" style="display:none">
         <?php Util_Ui::postbox_header( __( 'Miscellaneous', 'w3-total-cache' ), '', 'miscellaneous' ); ?>
         <table class="form-table">
             <?php
@@ -558,7 +558,7 @@ Util_Ui::config_item( array(
         <?php Util_Ui::button_config_save( 'general_misc' ); ?>
         <?php Util_Ui::postbox_footer(); ?>
         </div>
-        <div id="debug" class="tab" style="display:none">
+        <div id="tab_debug" class="tab" style="display:none">
         <?php Util_Ui::postbox_header( 'Debug', '', 'debug' ); ?>
         <p><?php _e( 'Detailed information about each cache will be appended in (publicly available) <acronym title="Hypertext Markup Language">HTML</acronym> comments in the page\'s source code. Performance in this mode will not be optimal, use sparingly and disable when not in use.', 'w3-total-cache' ); ?></p>
 
@@ -591,7 +591,7 @@ Util_Ui::config_item( array(
 
 <form action="admin.php?page=<?php echo $this->_page; ?>" method="post" enctype="multipart/form-data">
     <div class="metabox-holder">
-    <div id="import_export" class="tab" style="display:none">
+    <div id="tab_import_export" class="tab" style="display:none">
         <?php Util_Ui::postbox_header( __( 'Import / Export Settings', 'w3-total-cache' ), '', 'settings' ); ?>
         <?php echo Util_Ui::nonce_field( 'w3tc' ); ?>
         <table class="form-table">
@@ -622,4 +622,7 @@ Util_Ui::config_item( array(
     </div>
     </div>
 </form>
+<script type="text/javascript">
+    w3tc_lastTab('general');
+</script>
 <?php include W3TC_INC_DIR . '/options/common/footer.php'; ?>

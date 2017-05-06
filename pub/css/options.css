@@ -443,10 +443,10 @@ td.w3tc_config_value_text {
 .w3tc-bar{width:100%;overflow:hidden}.w3tc-center .w3tc-bar{display:inline-block;width:auto}
 .w3tc-bar .w3tc-bar-item{padding:8px 10px;float:left;width:auto;border:none;outline:none;display:block}
 .w3tc-bar .w3tc-button{white-space:normal}
-.w3tc-blue,.w3tc-hover-red:hover{color:#fff!important;background-color:#0FA9B5!important}
+.w3tc-blue,.w3tc-hover-red:hover{color:#fff!important;background-color: #747474 !important}
 .w3tc-black,.w3tc-hover-black:hover{color:#fff!important;background-color:#000!important}
 .w3tc-grey,.w3tc-hover-grey:hover{color:#fff!important;background-color:#ccc!important}
-.w3tc-button:hover{color:#000!important;background-color:#ccc!important}
+.w3tc-button:hover{color: #ffffff !important;background-color: #2390b5 !important}
 
 
 /*---*/

@@ -474,19 +474,36 @@ function w3tc_csp_reference() {
     });
 }
 
+function w3tc_lastTab(pageName) {
+    var page = sessionStorage.getItem("currentPageName");
+    if (page === pageName){
+        var tab = sessionStorage.getItem("currentTabName");
+        if (tab !== null){
+            w3tc_clearTabStates();
+            document.getElementById('tab_' + tab).style.display = "block";
+            document.getElementById('tablink_' + tab).className += " w3tc-blue";
+        }
+    }
+}
 
-function w3tc_openTab(evt, tabName) {
-    var i, x, tablinks;
-    x = document.getElementsByClassName("tab");
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+function w3tc_openTab(evt, tabName, pageName) {
+    sessionStorage.setItem("currentTabName", tabName);
+    sessionStorage.setItem("currentPageName", pageName);
+    w3tc_clearTabStates();
+    document.getElementById('tab_' + tabName).style.display = "block";
+    evt.currentTarget.className += " w3tc-blue";
+}
+
+function w3tc_clearTabStates() {
+    var i, tabs, tablinks;
+    tabs = document.getElementsByClassName("tab");
+    for (i = 0; i < tabs.length; i++) {
+        tabs[i].style.display = "none";
     }
     tablinks = document.getElementsByClassName("tablink");
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" w3tc-blue", "");
     }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " w3tc-blue";
 }
 
 jQuery(function() {
