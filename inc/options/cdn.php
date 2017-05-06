@@ -11,14 +11,15 @@ $upload_blogfiles_enabled = $cdn_mirror || !is_network_admin() ||
 
 ?>
 <?php include W3TC_INC_DIR . '/options/common/header.php'; ?>
-<p id="w3tc-options-menu">
-	<?php _e( 'Jump to:', 'w3-total-cache' ); ?>
-	<a href="#toplevel_page_w3tc_general"><?php _e( 'Main Menu', 'w3-total-cache' ); ?></a> |
-	<a href="#general"><?php _e( 'General', 'w3-total-cache' ); ?></a> |
-	<a href="#configuration"><?php _e( 'Configuration', 'w3-total-cache' ); ?></a> |
-	<a href="#advanced"><?php _e( 'Advanced', 'w3-total-cache' ); ?></a> |
-	<a href="#notes"><?php _e( 'Note(s)', 'w3-total-cache' ); ?></a>
-</p>
+
+<!-- <p id="w3tc-options-menu"> -->
+	<!-- <?php _e( 'Jump to:', 'w3-total-cache' ); ?> -->
+	<!-- <a href="#toplevel_page_w3tc_general"><?php _e( 'Main Menu', 'w3-total-cache' ); ?></a> | -->
+	<!-- <a href="#general"><?php _e( 'General', 'w3-total-cache' ); ?></a> | -->
+	<!-- <a href="#configuration"><?php _e( 'Configuration', 'w3-total-cache' ); ?></a> | -->
+	<!-- <a href="#advanced"><?php _e( 'Advanced', 'w3-total-cache' ); ?></a> | -->
+	<!-- <a href="#notes"><?php _e( 'Note(s)', 'w3-total-cache' ); ?></a> -->
+<!-- </p> -->
 
 <p>
 	<?php echo sprintf(
@@ -27,6 +28,7 @@ $upload_blogfiles_enabled = $cdn_mirror || !is_network_admin() ||
 	'<span class="w3tc-' . ( $cdn_enabled ? 'enabled">' . __( 'enabled', 'w3-total-cache' ) : 'disabled">' . __( 'disabled', 'w3-total-cache' ) ) . '</span>'
 ); ?>
 </p>
+
 <form id="w3tc_cdn" action="admin.php?page=<?php echo $this->_page; ?>" method="post">
 	<p>
 <?php if ( $cdn_mirror ): ?>
@@ -54,8 +56,16 @@ $upload_blogfiles_enabled = $cdn_mirror || !is_network_admin() ||
 	<input type="submit" name="w3tc_flush_browser_cache" value="<?php _e( 'Update media query string', 'w3-total-cache' ) ?>" <?php disabled( ! ( $browsercache_enabled && $browsercache_update_media_qs ) ) ?> class="button" /> <?php _e( 'to make existing file modifications visible to visitors with a primed cache.', 'w3-total-cache' ) ?>
 </p>
 </form>
+
+<div id="tabs" class="w3tc-bar w3tc-grey">
+    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'general')">General</button>
+    <button id="tablink_configuration" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'configuration', 'general')">Configuration</button>
+    <button id="tablink_advanced" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'advanced', 'general')">Advanced</button>
+</div>
+
 <form id="cdn_form" action="admin.php?page=<?php echo $this->_page; ?>" method="post">
 	<div class="metabox-holder">
+        <div id="tab_general" class="tab">
 		<?php Util_Ui::postbox_header( __( 'General', 'w3-total-cache' ), '', 'general' ); ?>
 		<table class="form-table">
 			<tr>
@@ -155,7 +165,8 @@ if ( !$upload_blogfiles_enabled )
 
 		<?php Util_Ui::button_config_save( 'cdn_general' ); ?>
 		<?php Util_Ui::postbox_footer(); ?>
-
+        </div>
+        <div id="tab_configuration" class="tab" style="display:none">
 		<?php Util_Ui::postbox_header( __( 'Configuration', 'w3-total-cache' ), '', 'configuration' ); ?>
 		<table class="form-table">
 			<?php
@@ -170,7 +181,8 @@ if ( $cdn_engine == 'google_drive' || $cdn_engine == 'highwinds' ||
 
 		<?php Util_Ui::button_config_save( 'cdn_configuration' ); ?>
 		<?php Util_Ui::postbox_footer(); ?>
-
+        </div>
+        <div id="tab_advanced" class="tab" style="display:none">
 		<?php Util_Ui::postbox_header( __( 'Advanced', 'w3-total-cache' ), '', 'advanced' ); ?>
 		<table class="form-table">
 			<tr>
@@ -333,7 +345,7 @@ $this->checkbox( 'cdn.autoupload.enabled', $disabled, '',
 
 		<?php Util_Ui::button_config_save( 'cdn_advanced' ); ?>
 		<?php Util_Ui::postbox_footer(); ?>
-
+        </div>
 		<?php Util_Ui::postbox_header( __( 'Note(s):', 'w3-total-cache' ), '', 'notes' ); ?>
 		<table class="form-table">
 			<tr>
@@ -348,4 +360,7 @@ $this->checkbox( 'cdn.autoupload.enabled', $disabled, '',
 		<?php Util_Ui::postbox_footer(); ?>
 	</div>
 </form>
+<script type="text/javascript">
+    w3tc_lastTab('cdn');
+</script>
 <?php include W3TC_INC_DIR . '/options/common/footer.php'; ?>
