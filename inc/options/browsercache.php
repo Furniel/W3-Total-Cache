@@ -21,8 +21,18 @@ if ( !defined( 'W3TC' ) )
 ?>
     </p>
 </form>
+
+<div id="tabs" class="w3tc-bar w3tc-grey">
+    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'general')">General</button>
+    <button id="tablink_css_js" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'css_js', 'general')">CSS &amp; JS</button>
+    <button id="tablink_html_xml" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'html_xml', 'general')">HTML & XML</button>
+    <button id="tablink_media_other" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'media_other', 'general')">Media &amp; Other Files</button>
+    <button id="tablink_security_headers" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'security_headers', 'general')">Security Headers</button>
+</div>
+
 <form action="admin.php?page=<?php echo $this->_page; ?>" method="post">
     <div class="metabox-holder">
+        <div id="tab_general" class="tab">
         <?php Util_Ui::postbox_header( __( 'General', 'w3-total-cache' ), '', 'general' ); ?>
         <p><?php _e( 'Specify global browser cache policy.', 'w3-total-cache' ) ?></p>
         <table class="form-table">
@@ -139,7 +149,8 @@ Util_Ui::config_item( array(
 
         <?php Util_Ui::button_config_save( 'browsercache_general' ); ?>
         <?php Util_Ui::postbox_footer(); ?>
-
+        </div>
+        <div id="tab_css_js" class="tab" style="display:none">
         <?php Util_Ui::postbox_header( __( '<acronym title="Cascading Style Sheet">CSS</acronym> &amp; <acronym title="JavaScript">JS</acronym>', 'w3-total-cache' ), '', 'css_js' ); ?>
         <p><?php _e( 'Specify browser cache policy for Cascading Style Sheets and JavaScript files.', 'w3-total-cache' ); ?></p>
 
@@ -232,7 +243,8 @@ Util_Ui::config_item( array(
 
         <?php Util_Ui::button_config_save( 'browsercache_css_js' ); ?>
         <?php Util_Ui::postbox_footer(); ?>
-
+        </div>
+        <div id="tab_html_xml" class="tab" style="display:none">
         <?php Util_Ui::postbox_header( __( '<acronym title="Hypertext Markup Language">HTML</acronym> &amp; <acronym title="Extensible Markup Language">XML</acronym>', 'w3-total-cache' ), '', 'html_xml' ); ?>
         <p><?php _e( 'Specify browser cache policy for posts, pages, feeds and text-based files.', 'w3-total-cache' ); ?></p>
 
@@ -307,7 +319,8 @@ Util_Ui::config_item( array(
 
         <?php Util_Ui::button_config_save( 'browsercache_html_xml' ); ?>
         <?php Util_Ui::postbox_footer(); ?>
-
+        </div>
+        <div id="tab_media_other" class="tab" style="display:none">
         <?php Util_Ui::postbox_header( __( 'Media &amp; Other Files', 'w3-total-cache' ), '', 'media' ); ?>
         <table class="form-table">
             <?php if ( !Util_Environment::is_nginx() ): ?>
@@ -398,7 +411,8 @@ Util_Ui::config_item( array(
 
         <?php Util_Ui::button_config_save( 'browsercache_media' ); ?>
         <?php Util_Ui::postbox_footer(); ?>
-        
+        </div>
+        <div id="tab_security_headers" class="tab" style="display:none">
         <?php Util_Ui::postbox_header( __( 'Security Headers', 'w3-total-cache' ), '', 'security' ); ?>
         <p><?php _e( 'HTTP security headers provide another layer of protection for your website by helping to mitigate attacks and security vulnerabilities.', 'w3-total-cache' ); ?></p>
         <table class="form-table">
@@ -739,7 +753,10 @@ Util_Ui::config_item( array(
 
         <?php Util_Ui::button_config_save( 'browsercache_security' ); ?>
         <?php Util_Ui::postbox_footer(); ?>
+        </div>
     </div>
 </form>
-
+<script type="text/javascript">
+    w3tc_lastTab('browser_cache');
+</script>
 <?php include W3TC_INC_DIR . '/options/common/footer.php'; ?>
