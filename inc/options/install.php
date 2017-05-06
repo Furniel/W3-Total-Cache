@@ -7,7 +7,23 @@ if ( !defined( 'W3TC' ) )
 ?>
 <?php include W3TC_INC_DIR . '/options/common/header.php'; ?>
 
+<h3><?php _e( 'Software Installation for Dedicated / Virtual Dedicated / Multiple Servers (Optional)', 'w3-total-cache' ); ?></h3>
+
+<div id="tabs" class="w3tc-bar w3tc-grey">
+    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'general')">General</button>
+    <?php if ( count( $rewrite_rules_descriptors ) ){ ?>
+    <button id="tablink_rewrite_rules" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'rewrite_rules', 'general')">Rewrite rules</button>
+    <?php } ?>
+    <button id="tablink_server_preparation" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'server_preparation', 'general')">Server Preparation</button>
+    <button id="tablink_memcached_daemon" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'memcached_daemon', 'general')">Memcached Daemon</button>
+    <button id="tablink_memcached_module" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'memcached_module', 'general')">Memcached Module</button>
+    <button id="tablink_xcache" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'apc', 'general')">APC</button>
+    <button id="tablink_eaccelerator" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'eaccelerator', 'general')">eAccelerator</button>
+    <button id="tablink_new_relic" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'new_relic', 'general')">New Relic</button>
+</div>
+
 <div id="install">
+    <div id="tab_general" class="tab">
     <ol>
         <li>
         	<?php _e( 'Set the permissions of wp-content/ back to 755, e.g.:', 'w3-total-cache' ); ?>
@@ -28,6 +44,8 @@ if ( !defined( 'W3TC' ) )
     </p>
 
 	<hr />
+    </div>
+    <div id="tab_rewrite_rules" class="tab" style="display:none">
     <?php if ( count( $rewrite_rules_descriptors ) ): ?>
 	<h3><?php _e( 'Rewrite rules', 'w3-total-cache' ); ?></h3>
     <?php foreach ( $rewrite_rules_descriptors as $descriptor ): ?>
@@ -46,7 +64,8 @@ if ( !defined( 'W3TC' ) )
         <?php endforeach; ?>
         <hr />
     <?php endif; ?>
-    <h3><?php _e( 'Software Installation for Dedicated / Virtual Dedicated / Multiple Servers (Optional)', 'w3-total-cache' ); ?></h3>
+    </div>
+    <div id="tab_server_preparation" class="tab" style="display:none">
 
 	<p><?php _e( '<strong>Server Preparation:</strong><br /><em>Time required: ~1 minute</em>', 'w3-total-cache' ); ?></p>
 
@@ -82,7 +101,8 @@ if ( !defined( 'W3TC' ) )
     </ol>
 
 	<hr />
-
+    </div>
+    <div id="tab_memcached_daemon" class="tab" style="display:none">
     <p id="memcached"><strong><?php _e( 'Memcached (Daemon) Installation:</strong><br /><em>Time required: 2 minutes</em>', 'w3-total-cache' ); ?></p>
 
     <ol>
@@ -130,11 +150,12 @@ if ( !defined( 'W3TC' ) )
     </ol>
 
 	<hr />
-
+    </div>
+    <div id="tab_memcached_module" class="tab" style="display:none">
 	<p id="memcache"><?php _e( '<strong><acronym title="PHP Extension Community Library">PECL</acronym> Memcached Module Installation:</strong><br /><em>Time required: 1 minute</em>', 'w3-total-cache' ); ?></p>
 
     <ol>
-        <li>
+        <li>m
         	<?php _e( 'Either use <acronym title="PHP Extension Community Library">PECL</acronym> (and skip to #4 if successful):', 'w3-total-cache' ); ?>
         	<pre class="console"># pecl install memcached</pre>
         </li>
@@ -161,7 +182,8 @@ if ( !defined( 'W3TC' ) )
     </ol>
 
 	<hr />
-
+    </div>
+    <div id="tab_apc" class="tab" style="display:none">
 	<p id="APC"><?php _e( '<strong><acronym title="PHP Extension Community Library">PECL</acronym> Alternative PHP Cache (<acronym title="Alternative PHP Cache">APC</acronym>) Installation (Recommended):</strong><br /><em>Time required: 1 minute</em>', 'w3-total-cache' ); ?></p>
 
     <ol>
@@ -199,7 +221,8 @@ if ( !defined( 'W3TC' ) )
     </ol>
 
 	<hr />
-
+    </div>
+    <div id="tab_xcache" class="tab" style="display:none">
 	<p id="XCache"><?php _e( '<strong>XCache Installation:</strong><br /><em>Time required: 1 minute</em>', 'w3-total-cache' ); ?></p>
 
     <ol>
@@ -232,7 +255,8 @@ if ( !defined( 'W3TC' ) )
     </ol>
 
 	<hr />
-
+    </div>
+    <div id="tab_eaccelerator" class="tab" style="display:none">
 	<p id="eAccelerator"><?php _e( '<strong>eAccelerator Installation:</strong><br /><em>Time required: 1 minute</em>', 'w3-total-cache' ); ?></p>
 
     <ol>
@@ -264,7 +288,8 @@ if ( !defined( 'W3TC' ) )
 		</li>
     </ol>
     <hr />
-
+    </div>
+    <div id="tab_new_relic" class="tab" style="display:none">
     <p id="newrelic"><strong>New Relic Installation:</strong><br /><em>Time required: Mileage varies.</em></p>
     <p>
         Find requirements and installation instructions on New Relic website: <a href="https://newrelic.com/docs/php/new-relic-for-php" target="_blank">Installing New Relic for PHP</a>.
@@ -279,7 +304,7 @@ if ( !defined( 'W3TC' ) )
   <li><a href="https://newrelic.com/docs/php/newrelic-daemon-startup-modes" target="_blank">New Relic Daemon Startup Modes</a></li>
 </ul>
     <hr />
-
+    </div>
     <div class="metabox-holder">
         <?php Util_Ui::postbox_header( __( 'Note(s):', 'w3-total-cache' ) ); ?>
         <table class="form-table">
@@ -299,5 +324,7 @@ if ( !defined( 'W3TC' ) )
         <?php Util_Ui::postbox_footer(); ?>
     </div>
 </div>
-
+<script type="text/javascript">
+    w3tc_lastTab('install');
+</script>
 <?php include W3TC_INC_DIR . '/options/common/footer.php'; ?>
