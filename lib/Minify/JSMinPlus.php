@@ -620,8 +620,8 @@ class Minify0_JSMinPlus
 						$s .= $t->type == JS_GETTER ? 'get' : 'set';
 						$s .= ' ' . $t->name . '(';
 						$params = $t->params;
-						for ($i = 0, $j = count($params); $i < $j; $i++)
-							$s .= ($i ? ',' : '') . $params[$i];
+						for ($k = 0, $l = count($params); $k < $l; $k++)
+							$s .= ($k ? ',' : '') . $params[$k];
 						$s .= '){' . $this->parseTree($t->body, true) . '}';
 					}
 				}
