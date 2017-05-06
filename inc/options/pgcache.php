@@ -7,6 +7,8 @@ if ( !defined( 'W3TC' ) )
 ?>
 <?php include W3TC_INC_DIR . '/options/common/header.php'; ?>
 
+
+
 <form action="admin.php?page=<?php echo $this->_page; ?>" method="post">
 	<p>
 		<?php echo
@@ -25,8 +27,17 @@ echo sprintf( __( 'To rebuild the page cache use the %s operation', 'w3-total-ca
 	</p>
 </form>
 
+<div id="tabs" class="w3tc-bar w3tc-grey">
+    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'general')">General</button>
+    <button id="tablink_aliases" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'aliases', 'general')">Aliases</button>
+    <button id="tablink_cache_preload" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'cache_preload', 'general')">Cache Preload</button>
+    <button id="tablink_purge_policy" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'purge_policy', 'general')">Purge Policy</button>
+    <button id="tablink_advanced" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'advanced', 'general')">Advanced</button>
+</div>
+
 <form action="admin.php?page=<?php echo $this->_page; ?>" method="post">
 	<div class="metabox-holder">
+        <div id="tab_general" class="tab">
 		<?php Util_Ui::postbox_header( __( 'General', 'w3-total-cache' ), '', 'general' ); ?>
 		<table class="form-table">
 			<tr>
@@ -94,7 +105,8 @@ echo sprintf( __( 'To rebuild the page cache use the %s operation', 'w3-total-ca
 
 		<?php echo Util_Ui::button_config_save( 'pagecache_general' ); ?>
 		<?php Util_Ui::postbox_footer(); ?>
-
+        </div>
+        <div id="tab_aliases" class="tab" style="display:none">
 		<?php Util_Ui::postbox_header( __( 'Aliases', 'w3-total-cache' ), '', 'mirrors' ); ?>
 		<table class="form-table">
 			<?php
@@ -119,7 +131,8 @@ Util_Ui::config_item( array(
 		</table>
 		<?php echo Util_Ui::button_config_save( 'pagecache_aliases' ); ?>
 		<?php Util_Ui::postbox_footer(); ?>
-
+        </div>
+        <div id="tab_cache_preload" class="tab" style="display:none">
 		<?php Util_Ui::postbox_header( __( 'Cache Preload', 'w3-total-cache' ), '', 'cache_preload' ); ?>
 		<table class="form-table">
 			<tr>
@@ -162,7 +175,8 @@ Util_Ui::config_item( array(
 
 		<?php echo Util_Ui::button_config_save( 'pagecache_cache_preload' ); ?>
 		<?php Util_Ui::postbox_footer(); ?>
-
+        </div>
+        <div id="tab_purge_policy" class="tab" style="display:none">
 		<?php
 $modules = array();
 if ( $pgcache_enabled ) $modules[] = 'Page Cache';
@@ -246,7 +260,8 @@ Util_Ui::postbox_header( __( 'Purge Policy: ', 'w3-total-cache' ) . implode( ', 
 
 		<?php echo Util_Ui::button_config_save( 'pagecache_purge_policy' ); ?>
 		<?php Util_Ui::postbox_footer(); ?>
-
+        </div>
+        <div id="tab_advanced" class="tab" style="display:none">
 		<?php Util_Ui::postbox_header( __( 'Advanced', 'w3-total-cache' ), '', 'advanced' ); ?>
 		<table class="form-table">
 			<tr>
@@ -457,7 +472,7 @@ echo sprintf(
 
 		<?php Util_Ui::button_config_save( 'pagecache_advanced' ); ?>
 		<?php Util_Ui::postbox_footer(); ?>
-
+        </div>
 		<?php Util_Ui::postbox_header( __( 'Note(s)', 'w3-total-cache' ), '', 'notes' ); ?>
 		<table class="form-table">
 			<tr>
@@ -472,5 +487,7 @@ echo sprintf(
 		<?php Util_Ui::postbox_footer(); ?>
 	</div>
 </form>
-
+<script type="text/javascript">
+    w3tc_lastTab('pgcache');
+</script>
 <?php include W3TC_INC_DIR . '/options/common/footer.php'; ?>
