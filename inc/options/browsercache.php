@@ -23,11 +23,11 @@ if ( !defined( 'W3TC' ) )
 </form>
 
 <div id="tabs" class="w3tc-bar w3tc-grey">
-    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'general')">General</button>
-    <button id="tablink_css_js" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'css_js', 'general')">CSS &amp; JS</button>
-    <button id="tablink_html_xml" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'html_xml', 'general')">HTML & XML</button>
-    <button id="tablink_media_other" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'media_other', 'general')">Media &amp; Other Files</button>
-    <button id="tablink_security_headers" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'security_headers', 'general')">Security Headers</button>
+    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'browser_cache')">General</button>
+    <button id="tablink_css_js" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'css_js', 'browser_cache')">CSS &amp; JS</button>
+    <button id="tablink_html_xml" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'html_xml', 'browser_cache')">HTML & XML</button>
+    <button id="tablink_media_other" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'media_other', 'browser_cache')">Media &amp; Other Files</button>
+    <button id="tablink_security_headers" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'security_headers', 'browser_cache')">Security Headers</button>
 </div>
 
 <form action="admin.php?page=<?php echo $this->_page; ?>" method="post">

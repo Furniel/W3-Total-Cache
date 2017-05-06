@@ -28,11 +28,11 @@ echo sprintf( __( 'To rebuild the page cache use the %s operation', 'w3-total-ca
 </form>
 
 <div id="tabs" class="w3tc-bar w3tc-grey">
-    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'general')">General</button>
-    <button id="tablink_aliases" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'aliases', 'general')">Aliases</button>
-    <button id="tablink_cache_preload" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'cache_preload', 'general')">Cache Preload</button>
-    <button id="tablink_purge_policy" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'purge_policy', 'general')">Purge Policy</button>
-    <button id="tablink_advanced" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'advanced', 'general')">Advanced</button>
+    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'pgcache')">General</button>
+    <button id="tablink_aliases" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'aliases', 'pgcache')">Aliases</button>
+    <button id="tablink_cache_preload" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'cache_preload', 'pgcache')">Cache Preload</button>
+    <button id="tablink_purge_policy" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'purge_policy', 'pgcache')">Purge Policy</button>
+    <button id="tablink_advanced" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'advanced', 'pgcache')">Advanced</button>
 </div>
 
 <form action="admin.php?page=<?php echo $this->_page; ?>" method="post">

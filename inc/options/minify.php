@@ -38,11 +38,11 @@ echo sprintf( __( 'To rebuild the minify cache use the %s operation.', 'w3-total
 </form>
 
 <div id="tabs" class="w3tc-bar w3tc-grey">
-    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'general')">General</button>
-    <button id="tablink_html" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'html', 'general')">HTML</button>
-    <button id="tablink_js" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'js', 'general')">JS</button>
-    <button id="tablink_css" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'css', 'general')">CSS</button>
-    <button id="tablink_advanced" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'advanced', 'general')">Advanced</button>
+    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'minify')">General</button>
+    <button id="tablink_html" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'html', 'minify')">HTML</button>
+    <button id="tablink_js" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'js', 'minify')">JS</button>
+    <button id="tablink_css" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'css', 'minify')">CSS</button>
+    <button id="tablink_advanced" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'advanced', 'minify')">Advanced</button>
 </div>
 
 <form id="minify_form" action="admin.php?page=<?php echo $this->_page; ?>" method="post">

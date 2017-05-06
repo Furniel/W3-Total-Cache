@@ -10,16 +10,16 @@ if ( !defined( 'W3TC' ) )
 <h3><?php _e( 'Software Installation for Dedicated / Virtual Dedicated / Multiple Servers (Optional)', 'w3-total-cache' ); ?></h3>
 
 <div id="tabs" class="w3tc-bar w3tc-grey">
-    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'general')">General</button>
+    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'install')">General</button>
     <?php if ( count( $rewrite_rules_descriptors ) ){ ?>
-    <button id="tablink_rewrite_rules" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'rewrite_rules', 'general')">Rewrite rules</button>
+    <button id="tablink_rewrite_rules" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'rewrite_rules', 'install')">Rewrite rules</button>
     <?php } ?>
-    <button id="tablink_server_preparation" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'server_preparation', 'general')">Server Preparation</button>
-    <button id="tablink_memcached_daemon" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'memcached_daemon', 'general')">Memcached Daemon</button>
-    <button id="tablink_memcached_module" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'memcached_module', 'general')">Memcached Module</button>
-    <button id="tablink_xcache" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'apc', 'general')">APC</button>
-    <button id="tablink_eaccelerator" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'eaccelerator', 'general')">eAccelerator</button>
-    <button id="tablink_new_relic" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'new_relic', 'general')">New Relic</button>
+    <button id="tablink_server_preparation" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'server_preparation', 'install')">Server Preparation</button>
+    <button id="tablink_memcached_daemon" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'memcached_daemon', 'install')">Memcached Daemon</button>
+    <button id="tablink_memcached_module" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'memcached_module', 'install')">Memcached Module</button>
+    <button id="tablink_xcache" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'apc', 'install')">APC</button>
+    <button id="tablink_eaccelerator" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'eaccelerator', 'install')">eAccelerator</button>
+    <button id="tablink_new_relic" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'new_relic', 'install')">New Relic</button>
 </div>
 
 <div id="install">

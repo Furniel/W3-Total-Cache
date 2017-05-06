@@ -58,9 +58,9 @@ $upload_blogfiles_enabled = $cdn_mirror || !is_network_admin() ||
 </form>
 
 <div id="tabs" class="w3tc-bar w3tc-grey">
-    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'general')">General</button>
-    <button id="tablink_configuration" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'configuration', 'general')">Configuration</button>
-    <button id="tablink_advanced" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'advanced', 'general')">Advanced</button>
+    <button id="tablink_general" class="w3tc-bar-item w3tc-button tablink w3tc-blue" onclick="w3tc_openTab(event,'general', 'cdn')">General</button>
+    <button id="tablink_configuration" class="w3tc-bar-item w3tc-button tablink" onclick="w3tc_openTab(event,'configuration', 'cdn')">Configuration</button>
+    <button id="tablink_advanced" class="w3tc-bar-item w3tc-button tablink" data-tab-index="1" onclick="w3tc_openTab(event,'advanced', 'cdn')">Advanced</button>
 </div>
 
 <form id="cdn_form" action="admin.php?page=<?php echo $this->_page; ?>" method="post">
