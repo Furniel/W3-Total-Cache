@@ -17,6 +17,8 @@ class Generic_ConfigLabels {
 				'config.check' => __( 'Verify rewrite rules', 'w3-total-cache' ),
 				'plugin.license_key' => __( 'License:', 'w3-total-cache' ),
 
+				'lazyloading.enabled' => __( 'Lazy loading:', 'w3-total-cache' ),
+
 				'referrer.enabled' => __( 'Referrers:', 'w3-total-cache' ),
 				'referrer.rgroups' => __( 'Referrer groups', 'w3-total-cache' ),
 				'mobile.enabled' => __( 'User Agents:', 'w3-total-cache' ),

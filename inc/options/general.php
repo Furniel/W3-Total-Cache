@@ -197,6 +197,34 @@ Util_Ui::button_config_save( 'general_minify',
 
 
         <?php
+        Util_Ui::postbox_header( __( 'Lazy loading', 'w3-total-cache' ), '', 'lazy_loading' );
+        Util_Ui::config_overloading_button( array(
+            'key' => 'lazyloading.configuration_overloaded'
+        ) );
+        ?>
+        <p><?php _e( 'Use Lazy Loading for images.', 'w3-total-cache' ); ?></p>
+
+        <table class="form-table">
+            <?php
+            Util_Ui::config_item( array(
+                'key' => 'lazyloading.enabled',
+                'control' => 'checkbox',
+                'checkbox_label' => __( 'Enable', 'w3-total-cache' ),
+                'description' => __( 'Lazy loading can decrease page loading time.', 'w3-total-cache' )
+            ) );
+            ?>
+        </table>
+
+        <?php
+        Util_Ui::button_config_save( 'lazy_loading',
+            '<input type="submit" name="w3tc_flush_minify" value="' .
+            __( 'Empty cache', 'w3-total-cache' ) . '" ' .
+            ( $minify_enabled ? '' : ' disabled="disabled" ' ) .
+            ' class="button" />' );
+        ?>
+        <?php Util_Ui::postbox_footer(); ?>
+
+        <?php
 
 do_action( 'w3tc_settings_general_boxarea_system_opcache' ) ?>
         <?php

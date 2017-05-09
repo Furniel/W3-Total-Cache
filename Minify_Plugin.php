@@ -140,6 +140,12 @@ class Minify_Plugin {
 		$enable = Util_Content::is_html_xml( $buffer ) &&
 			$this->can_minify2( $buffer );
 		$enable = apply_filters( 'w3tc_minify_enable', $enable );
+
+		$lazyloading_enable = $this->_config->get_boolean( 'lazyloading.enabled' );
+		if ($lazyloading_enable){
+			$buffer = $this->w3tc_lazy_loading($buffer);
+		}
+
 		if ( !$enable )
 			return $buffer;
 
@@ -403,6 +409,22 @@ class Minify_Plugin {
 		}
 
 		return $buffer;
+	}
+
+	function w3tc_lazy_loading ($html){
+		//replace images links
+		$html = str_replace(
+			'<img src="'
+			,'<img alt="..." data-original="'
+			,$html);
+
+		//add Lazy Load script to page
+		$html = str_replace(
+			'</body>'
+			,'<script src="' . plugins_url( '/lib/LazyLoad/lazyload.transpiled.min.js', W3TC_FILE ) .'"></script><script>new LazyLoad();</script></body>'
+			,$html);
+			
+		return $html;
 	}
 
 	public function w3tc_admin_bar_menu( $menu_items ) {

@@ -25,6 +25,7 @@ $licensing_visible = ( ( !Util_Environment::is_wpmu() || is_network_admin() ) &&
 			array( 'id' => 'page_cache', 'text' => __( 'Page Cache', 'w3-total-cache' ) ),
 			array( 'id' => 'minify', 'text' => 'Minify' ),
 			array( 'id' => 'system_opcache', 'text' => __( 'Opcode Cache', 'w3-total-cache' ) ),
+			array( 'id' => 'lazy_loading', 'text' => __( 'Lazy loading', 'w3-total-cache' ) ),
 			array( 'id' => 'database_cache', 'text' => __( 'Database Cache', 'w3-total-cache' ) ),
 			array( 'id' => 'object_cache', 'text' => __( 'Object Cache', 'w3-total-cache' ) ) );
 		if ( Util_Environment::is_w3tc_pro( $config ) )
