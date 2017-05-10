@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: W3 Total Cache
+Plugin Name: W3 Total Cache (Fixed)
 Description: The highest rated and most complete WordPress performance plugin. Dramatically improve the speed and user experience of your site. Add browser, page, object and database caching as well as minify and content delivery network (CDN) to WordPress.
 Version: 0.9.5.4
-Plugin URI: https://www.w3-edge.com/wordpress-plugins/w3-total-cache/
-Author: Frederick Townes
-Author URI: http://www.linkedin.com/in/fredericktownes
+Plugin URI: https://github.com/szepeviktor/w3-total-cache-fixed/
+Author: W3TC (Fixed) Community
+Author URI: https://github.com/szepeviktor/w3-total-cache-fixed/
 Network: True
 */
 
@@ -52,6 +52,26 @@ if ( version_compare( PHP_VERSION, '5.3.0', '<') ) {
 	register_activation_hook( __FILE__, 'w3tc_old_php_activate' );
     return;
 }
+
+function dissable_official_updates( $r, $url ) {
+    if ( 0 === strpos( $url, 'https://api.wordpress.org/plugins/update-check/' ) ) {
+        $my_plugin = plugin_basename( __FILE__ );
+        $plugins = json_decode( $r['body']['plugins'], true );
+        unset( $plugins['plugins'][$my_plugin] );
+        unset( $plugins['active'][array_search( $my_plugin, $plugins['active'] )] );
+        $r['body']['plugins'] = json_encode( $plugins );
+    }
+    return $r;
+}
+add_filter( 'http_request_args', 'dissable_official_updates', 10, 2 );
+
+require __DIR__ . '/update-checker/plugin-update-checker.php';
+$updateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/Furniel/W3-Total-Cache/',
+	__FILE__,
+	'W3-Total-Cache'
+);
+$updateChecker->setBranch('master');
 
 if ( !defined( 'W3TC_IN_MINIFY' ) ) {
 	/**
