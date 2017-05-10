@@ -412,11 +412,26 @@ class Minify_Plugin {
 	}
 
 	function w3tc_lazy_loading ($html){
-		//replace images links
-		$html = str_replace(
-			'<img src="'
-			,'<img alt="..." data-original="'
-			,$html);
+
+        // read all image tags into an array
+        preg_match_all('/< ?img[^>]+>/i',$html, $imgTags);
+
+        foreach ($imgTags[0] as $imgTag){
+            // get the source string
+            preg_match('/src=("[^"]*")/i',$imgTag, $imgsrc);
+
+            //Generate new img tag
+            $imgTagNew = str_replace('src="','data-original="', $imgTag);
+
+            if (preg_match('/alt=["\'][^"\']*["\']/i', $imgTagNew)) {
+                $imgTagNew = preg_replace('/alt=["\'][^"\']*["\']/i','alt="..."', $imgTagNew);
+            } else {
+                $imgTagNew = str_replace('data-original','alt="..." data-original', $imgTagNew);
+            }
+
+            //replace images tag
+            $html = str_replace($imgTag, $imgTagNew, $html);
+        }
 
 		//add Lazy Load script to page
 		$html = str_replace(
