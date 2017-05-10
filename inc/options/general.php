@@ -213,6 +213,13 @@ Util_Ui::button_config_save( 'general_minify',
                 'description' => __( 'Lazy loading can decrease page loading time.', 'w3-total-cache' )
             ) );
             ?>
+            <th><label for="lazyload_reject_files"><?php Util_Ui::e_config_label( 'lazyload.reject.files' ) ?></label></th>
+            <td>
+            <textarea id="lazyload_reject_files" name="lazyload__reject__files"
+                <?php Util_Ui::sealing_disabled( 'pgcache' ) ?>
+                      cols="40" rows="5"><?php echo esc_textarea( implode( "\r\n", $this->_config->get_array('lazyload.reject.files' ) ) ); ?></textarea><br />
+                <span class="description"><?php _e( 'Never use Lazy loading for these files. Regexp supported.', 'w3-total-cache' ); ?></span>
+            </td>
         </table>
 
         <?php

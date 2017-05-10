@@ -18,6 +18,7 @@ class Generic_ConfigLabels {
 				'plugin.license_key' => __( 'License:', 'w3-total-cache' ),
 
 				'lazyloading.enabled' => __( 'Lazy loading:', 'w3-total-cache' ),
+				'lazyload.reject.files' =>  __( 'Never Lazy load these files:', 'w3-total-cache' ),
 
 				'referrer.enabled' => __( 'Referrers:', 'w3-total-cache' ),
 				'referrer.rgroups' => __( 'Referrer groups', 'w3-total-cache' ),

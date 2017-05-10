@@ -941,6 +941,10 @@ $keys = array(
 		'type' => 'boolean',
 		'default' => false
 	),
+    'lazyload.reject.files' => array(
+        'type' => 'array',
+        'default' => array()
+    ),
 
 	'cdn.configuration_overloaded' => array(
 		'type' => 'boolean',

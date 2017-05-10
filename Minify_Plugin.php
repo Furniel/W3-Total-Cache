@@ -417,8 +417,13 @@ class Minify_Plugin {
         preg_match_all('/< ?img[^>]+>/i',$html, $imgTags);
 
         foreach ($imgTags[0] as $imgTag){
-            // get the source string
-            preg_match('/src=("[^"]*")/i',$imgTag, $imgsrc);
+            // Do not lazy load these files
+            $reject_files = $this->_config->get_array( 'lazyload.reject.files' );
+            if (!empty($reject_files)) {
+                if ( !@preg_match( '~' . implode( "|", $reject_files ) . '~i', $imgTag ) ) {
+                    continue;
+                }
+            }
 
             //Generate new img tag
             $imgTagNew = str_replace('src="','data-original="', $imgTag);
